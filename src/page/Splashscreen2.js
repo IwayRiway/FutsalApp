@@ -1,6 +1,9 @@
-import React from 'react'
-import { StyleSheet, Image, View, Text } from 'react-native'
-import { Button } from '../atom'
+/* eslint-disable prettier/prettier */
+/* eslint-disable react-native/no-inline-styles */
+
+import React from 'react';
+import { StyleSheet, Image, View, Text } from 'react-native';
+import { Button } from '../atom';
 
 const Splashscreen2 = () => {
    return (
@@ -8,7 +11,7 @@ const Splashscreen2 = () => {
 
          {/* IMAGE */}
          <View style={{height:383.45}}>
-            <Image source={require('../asset/blob_splash2.png')} style={{height:383.45, marginTop:60}}></Image>
+            <Image source={require('../asset/blob_splash2.png')} style={{height:383.45, marginTop:60}}/>
          </View>
 
          {/* Description */}
@@ -31,6 +34,6 @@ const Splashscreen2 = () => {
    )
 }
 
-export default Splashscreen2
+export default Splashscreen2;
 
 const styles = StyleSheet.create({})

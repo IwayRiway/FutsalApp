@@ -1,3 +1,7 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable semi */
+/* eslint-disable react-native/no-inline-styles */
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import {
    Image, StyleSheet,
@@ -14,7 +18,7 @@ const Splashscreen1 = () => {
       {/* MAIN */}
       <View style={{flex:1, justifyContent: 'center', alignItems:'center'}}>
         <View style={styles.borderDash}>
-          <Image source={require('../asset/logo.png')} style={{height: 90, width:90}}></Image>
+          <Image source={require('../asset/logo.png')} style={{height: 90, width:90}}/>
         </View>
           <Text style={{marginTop:15, fontFamily:'Poppins', fontWeight:'bold', fontSize:24}}>Futsal-e</Text>
       </View>
@@ -35,6 +39,6 @@ const styles = StyleSheet.create({
       borderRadius : 100,
       borderColor : '#000000',
       borderStyle: 'dashed',
-      justifyContent: 'center'
-    }
+      justifyContent: 'center',
+    },
 })

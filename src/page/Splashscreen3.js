@@ -1,6 +1,10 @@
-import React from 'react'
-import { StyleSheet, Image, View, Text } from 'react-native'
-import { Button } from '../atom'
+/* eslint-disable prettier/prettier */
+/* eslint-disable react/self-closing-comp */
+/* eslint-disable react-native/no-inline-styles */
+
+import React from 'react';
+import { StyleSheet, Image, View, Text } from 'react-native';
+import { Button } from '../atom';
 
 const Splashscreen3 = () => {
    return (
@@ -28,6 +32,6 @@ const Splashscreen3 = () => {
    )
 }
 
-export default Splashscreen3
+export default Splashscreen3;
 
 const styles = StyleSheet.create({})
