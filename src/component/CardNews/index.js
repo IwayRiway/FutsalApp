@@ -5,15 +5,19 @@
 import React from 'react';
 
 import { StyleSheet, Image, View, Text } from 'react-native';
+import {Button2} from '../../atom'
 const CardNews = () => {
    return (
       <View style={styles.card}>
          <Image source={require('../../asset/timnas.png')} style={{width:'100%', height:115, borderTopLeftRadius:20, borderTopRightRadius:20}}/>
-         <View style={{ flexDirection:'row', justifyContent:'space-between', height:24, marginTop:20}}>
-            <Text style={{fontFamily:'Poppins', fontWeight:'bold', fontSize:14}}>Food & Beverages</Text>
-            <Image source={require('../asset/icon/show_all.png')} style={{width:24, height:24}}/>
+         <View style={{ flexDirection:'row', height:32, marginTop:10, paddingHorizontal:10,}}>
+            <View style={{flex:1, justifyContent:'center'}}>
+               <Text style={{fontFamily:'Poppins', fontWeight:'bold', fontSize:14, justifyContent:'center'}}>Indonesia vs Uni Emirate Arab</Text>
+            </View>
+            <View style={{ width: 78}}>
+               <Button2 text={'Read More'} />
+            </View>
          </View>
-         <Text style={{fontFamily:'Poppins', fontWeight:'normal', fontSize:14, paddingHorizontal:10, paddingBottom:10, marginTop:10, width:100}}>Lapangan Syntetic C</Text>
       </View>
    )
 }
@@ -23,7 +27,7 @@ export default CardNews;
 const styles = StyleSheet.create({
    card : {
       marginBottom:15,
-      width: 335,
+      width: '100%',
       height:167,
       borderRadius:20,
       backgroundColor: '#FFFFFF',

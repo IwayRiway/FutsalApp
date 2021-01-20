@@ -7,13 +7,13 @@ import {
    StyleSheet,
    View, ImageBackground, Image, Text, ScrollView,
 } from 'react-native';
-import { CardHome, Navigation } from '../component';
+import { CardHome, Navigation, CardNews } from '../component';
 import { Banner } from '../atom';
 
 const Beranda = () => {
    return (
     <View style={{flex:1}} >
-         <ScrollView style={{flex:1, marginBottom:20,}}>
+         <ScrollView style={{flex:1, marginBottom:0}} showsVerticalScrollIndicator={false}>
             <ImageBackground style={{height:155, width:"100%"}} source={require('../asset/top.png')}>
                <View style={{flexDirection:'row', marginTop:28}}>
                   <View style={{flex:1, marginLeft:20}}>
@@ -33,7 +33,7 @@ const Beranda = () => {
                   <Text style={{fontFamily:'Poppins', fontWeight:'bold', fontSize:14}}>Futsal Field</Text>
                   <Image source={require('../asset/icon/show_all.png')} style={{width:24, height:24}}/>
                </View>
-               <ScrollView style={{ flexDirection:'row', marginTop:20}} horizontal showsHorizontalScrollIndicator={false}>
+               <ScrollView style={{ flexDirection:'row', marginTop:10}} horizontal showsHorizontalScrollIndicator={false}>
                   <CardHome />
                   <CardHome />
                   <CardHome />
@@ -47,7 +47,7 @@ const Beranda = () => {
                   <Text style={{fontFamily:'Poppins', fontWeight:'bold', fontSize:14}}>Food & Beverages</Text>
                   <Image source={require('../asset/icon/show_all.png')} style={{width:24, height:24}}/>
                </View>
-               <ScrollView style={{ flexDirection:'row', marginTop:20}} horizontal showsHorizontalScrollIndicator={false}>
+               <ScrollView style={{ flexDirection:'row', marginTop:10}} horizontal showsHorizontalScrollIndicator={false}>
                   <CardHome />
                   <CardHome />
                   <CardHome />
@@ -57,7 +57,9 @@ const Beranda = () => {
                   <CardHome />
                   <CardHome />
                </ScrollView>
-               <Text style={{fontFamily:'Poppins', fontWeight:'bold', fontSize:14, marginTop:20}}>What happen..?</Text>
+               <Text style={{fontFamily:'Poppins', fontWeight:'bold', fontSize:14, marginTop:20, marginBottom:10}}>What happen..?</Text>
+               <CardNews/>
+               <CardNews/>
             </View>
          </ScrollView>
 

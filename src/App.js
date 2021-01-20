@@ -13,6 +13,9 @@ import Splashscreen3 from './page/Splashscreen3';
 import Login from './page/Login';
 import Register from './page/Register';
 import Beranda from './page/Beranda';
+import PromoAndNews from './page/PromoAndNews';
+import Field from './page/Field';
+import BookNow from './page/BookNow';
 
 const App = () => {
   return (
@@ -21,7 +24,10 @@ const App = () => {
     // <Splashscreen3/>
     // <Login />
     // <Register />
-    <Beranda />
+    // <Beranda />
+    // <PromoAndNews />
+    // <Field />
+    <BookNow />
   );
 };
 
