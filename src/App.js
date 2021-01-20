@@ -16,6 +16,7 @@ import Beranda from './page/Beranda';
 import PromoAndNews from './page/PromoAndNews';
 import Field from './page/Field';
 import BookNow from './page/BookNow';
+import BookList from './page/BookList';
 
 const App = () => {
   return (
@@ -27,7 +28,8 @@ const App = () => {
     // <Beranda />
     // <PromoAndNews />
     // <Field />
-    <BookNow />
+    // <BookNow />
+    <BookList />
   );
 };
 
