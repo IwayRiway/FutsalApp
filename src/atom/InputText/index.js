@@ -6,7 +6,7 @@ import { StyleSheet, TextInput} from 'react-native';
 
 const InputText = ({placeholder}) => {
    return (
-      <TextInput placeholder={placeholder} style={{borderWidth:1, borderColor:'#AFAC99', borderRadius:20, paddingHorizontal:20, paddingVertical:18}}/>
+      <TextInput placeholder={placeholder} style={{borderWidth:1, borderColor:'#AFAC99', borderRadius:20, paddingHorizontal:20, paddingVertical:18, height:53}}/>
    )
 }
 

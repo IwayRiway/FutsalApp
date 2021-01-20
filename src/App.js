@@ -11,13 +11,17 @@ import Splashscreen1 from './page/Splashscreen1';
 import Splashscreen2 from './page/Splashscreen2';
 import Splashscreen3 from './page/Splashscreen3';
 import Login from './page/Login';
+import Register from './page/Register';
+import Beranda from './page/Beranda';
 
 const App = () => {
   return (
     // <Splashscreen1/>
     // <Splashscreen2/>
     // <Splashscreen3/>
-    <Login />
+    // <Login />
+    // <Register />
+    <Beranda />
   );
 };
 

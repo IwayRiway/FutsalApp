@@ -1,14 +1,15 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable quotes */
 /* eslint-disable react-native/no-inline-styles */
 
 import React from 'react';
-import { Image, ImageBackground, KeyboardAvoidingView, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Image, ImageBackground, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Button, InputText } from '../atom';
 
-const Splashscreen2 = () => {
+const Login = () => {
    return (
-      <KeyboardAvoidingView style={{flex:1}} behavior="padding" enabled>
-      <ImageBackground style={{flex:1}} source={require('../asset/bg.png')} width="100%" height="100%">
+      <KeyboardAvoidingView style={{flex:1}} behavior={Platform.OS === "ios" ? "padding" : "height"}>
+      <ImageBackground style={{flex:1, padding: 24, justifyContent: "space-around"}} source={require('../asset/bg.png')} width="100%" height="100%">
          <ScrollView style={{flex:1, paddingVertical:40, paddingHorizontal:20}}>
             <Text style={{fontFamily:'Poppins', fontWeight:'bold', fontSize:31}}>Login</Text>
             <View style={{height:90, alignItems:'center', marginTop:20}}>
@@ -25,12 +26,16 @@ const Splashscreen2 = () => {
                   <Button width={'100%'} height={53} text={'Sign In'}/>
                </View>
             </View>
+            <View style={{flex:1, marginTop:20, alignItems:'center'}}>
+               <Text style={{fontFamily:'Poppins', fontWeight:'normal', fontSize:14}}>Dont have account? <Text style={{color:"#62BAAC"}}>Create here..</Text></Text>
+            </View>
          </ScrollView>
       </ImageBackground>
       </KeyboardAvoidingView>
    );
 };
 
-export default Splashscreen2;
+export default Login;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+});

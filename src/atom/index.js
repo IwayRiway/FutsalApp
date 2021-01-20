@@ -5,5 +5,6 @@ import TopHeader from './TopHeader';
 import Bottom from './Bottom';
 import Button from './Button';
 import InputText from './InputText';
+import Banner from './Banner';
 
-export {TopHeader, Bottom, Button, InputText}
+export {TopHeader, Bottom, Button, InputText, Banner}
