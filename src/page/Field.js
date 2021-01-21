@@ -24,6 +24,13 @@ const Field = () => {
                <CardField />
                <CardField />
                <CardField />
+               <CardField />
+               <CardField />
+               <CardField />
+               <CardField />
+               <CardField />
+               <CardField />
+               <CardField />
             </View>
          </ScrollView>
 
