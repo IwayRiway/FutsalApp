@@ -20,6 +20,9 @@ import BookList from './page/BookList';
 import Success from './page/Success';
 import Food from './page/Food';
 import OrderList from './page/OrderList';
+import BookDetail from './page/BookDetail';
+import OrderDetail from './page/OrderDetail';
+import EditProfile from './page/EditProfile';
 
 const App = () => {
   return (
@@ -35,7 +38,10 @@ const App = () => {
     // <BookList />
     // <Success />
     // <Food />
-    <OrderList />
+    // <OrderList />
+    // <BookDetail />
+    // <OrderDetail />
+    <EditProfile />
   );
 };
 
