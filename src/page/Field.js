@@ -5,11 +5,15 @@
 import React from 'react';
 import {
    ImageBackground, ScrollView, StyleSheet,
-   Text, View
+   Text, View, TouchableOpacity,
 } from 'react-native';
 import { CardField, Navigation } from '../component';
 
-const Field = () => {
+const Field = ({navigation}) => {
+
+   const goTo = (page) => {navigation.replace(page);}
+   const goTo2 = (page) => {navigation.navigate(page);}
+
    return (
     <View style={{flex:1}} >
          <ScrollView style={{flex:1, marginBottom:0}} showsVerticalScrollIndicator={false}>
@@ -17,20 +21,9 @@ const Field = () => {
                <Text style={{fontFamily:'Poppins', fontWeight:'bold', fontSize:24, marginLeft:20, marginTop:40}}>Futsal Field</Text>
             </ImageBackground>
             <View style={{flex:1,marginTop:-60, paddingHorizontal:20}}>
-               <CardField />
-               <CardField />
-               <CardField />
-               <CardField />
-               <CardField />
-               <CardField />
-               <CardField />
-               <CardField />
-               <CardField />
-               <CardField />
-               <CardField />
-               <CardField />
-               <CardField />
-               <CardField />
+               <TouchableOpacity onPress={()=>goTo2('BookNow')}>
+                  <CardField />
+               </TouchableOpacity>
             </View>
          </ScrollView>
 

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
@@ -7,49 +8,14 @@
  */
 
 import React from 'react';
-import Splashscreen1 from './page/Splashscreen1';
-import Splashscreen2 from './page/Splashscreen2';
-import Splashscreen3 from './page/Splashscreen3';
-import Login from './page/Login';
-import Register from './page/Register';
-import Beranda from './page/Beranda';
-import PromoAndNews from './page/PromoAndNews';
-import Field from './page/Field';
-import BookNow from './page/BookNow';
-import BookList from './page/BookList';
-import Success from './page/Success';
-import Food from './page/Food';
-import OrderList from './page/OrderList';
-import BookDetail from './page/BookDetail';
-import OrderDetail from './page/OrderDetail';
-import EditProfile from './page/EditProfile';
-import Account from './page/Account';
-import Help from './page/Help';
-import TabViewExample from './page/TabViewExample';
-import History from './page/History';
+import { NavigationContainer } from '@react-navigation/native';
+import Router from './Router';
 
 const App = () => {
   return (
-    // <Splashscreen1/>
-    // <Splashscreen2/>
-    // <Splashscreen3/>
-    // <Login />
-    // <Register />
-    // <Beranda />
-    // <PromoAndNews />
-    // <Field />
-    // <BookNow />
-    // <BookList />
-    // <Success />
-    // <Food />
-    // <OrderList />
-    // <BookDetail />
-    // <OrderDetail />
-    // <EditProfile />
-    // <Account />
-    // <Help />
-    // <TabViewExample />
-    <History />
+    <NavigationContainer>
+      <Router />
+    </NavigationContainer>
   );
 };
 

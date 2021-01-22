@@ -5,11 +5,15 @@
 import React from 'react';
 import {
    ImageBackground, ScrollView, StyleSheet,
-   Text, View, Image,
+   Text, View, Image, TouchableOpacity,
 } from 'react-native';
 import { CardFood, Navigation } from '../component';
 
-const Food = () => {
+const Food = ({navigation}) => {
+
+   const goTo = (page) => {navigation.replace(page);}
+   const goTo2 = (page) => {navigation.navigate(page);}
+
    return (
     <View style={{flex:1}} >
          <ScrollView style={{flex:1, marginBottom:0}} showsVerticalScrollIndicator={false}>
@@ -25,24 +29,13 @@ const Food = () => {
             <View style={{flex:1, paddingHorizontal:20, marginBottom:60}}>
                <Text style={{fontFamily:'Poppins', fontWeight:'bold', fontSize:14, marginTop:20, marginBottom:10}}>Beverages</Text>
                <CardFood />
-               <CardFood />
-               <CardFood />
-               <CardFood />
-               <CardFood />
-               <CardFood />
-               <CardFood />
-               <CardFood />
-               <CardFood />
-               <CardFood />
-               <CardFood />
-               <CardFood />
-               <CardFood />
-               <CardFood />
             </View>
          </ScrollView>
 
          <View style={styles.btnNext}>
-            <Image source={require('../asset/icon/buy.png')} style={{width:40, height:40}}/>
+            <TouchableOpacity onPress={()=>goTo2('OrderList')}>
+               <Image source={require('../asset/icon/buy.png')} style={{width:40, height:40}}/>
+            </TouchableOpacity>
          </View>
 
          {/* NAVIGATION */}

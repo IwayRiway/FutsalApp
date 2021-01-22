@@ -3,10 +3,13 @@
 /* eslint-disable react-native/no-inline-styles */
 
 import React from 'react';
-import { StyleSheet, Image, View, Text } from 'react-native';
+import { StyleSheet, Image, View, Text, TouchableOpacity } from 'react-native';
 import { Button } from '../atom';
 
-const Success = () => {
+const Success = ({navigation}) => {
+
+   const goTo = (page) => {navigation.replace(page);}
+
    return (
       <View style={{flex:1, paddingHorizontal:20}}>
 
@@ -24,7 +27,9 @@ const Success = () => {
 
          {/* BUTTON */}
             <View style={{flex:1, marginTop:-50}}>
-               <Button width={'100%'} height={53} text={'Back To Home'}/>
+               <TouchableOpacity onPress={()=>goTo('Field')}>
+                  <Button width={'100%'} height={53} text={'Back To Home'}/>
+               </TouchableOpacity>
             </View>
       </View>
    )

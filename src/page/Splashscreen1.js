@@ -2,14 +2,20 @@
 /* eslint-disable semi */
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable prettier/prettier */
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
    Image, StyleSheet,
-   Text, View
+   Text, View,
 } from 'react-native';
 import { Bottom, TopHeader } from '../atom';
 
-const Splashscreen1 = () => {
+const Splashscreen1 = ({navigation}) => {
+   useEffect(() => {
+      setTimeout(() => {
+         navigation.replace('Splashscreen2');
+      }, 2000);
+   });
+
    return (
       <View style={{flex:1}}>
       {/* TOP */}

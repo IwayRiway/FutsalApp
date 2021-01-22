@@ -1,11 +1,18 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable no-alert */
+/* eslint-disable semi */
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-native/no-inline-styles */
 
 import React from 'react';
 import { StyleSheet, Image, View, Text } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Button } from '../atom';
 
-const Splashscreen2 = () => {
+const Splashscreen2 = ({navigation}) => {
+
+   const goTo = (page) => {navigation.replace(page);}
+
    return (
       <View style={{flex:1}}>
 
@@ -23,11 +30,13 @@ const Splashscreen2 = () => {
 
          {/* BUTTON */}
          <View style={{height:53, flexDirection:'row', paddingHorizontal:20, marginBottom:20}}>
-            <View style={{flex:1, justifyContent:'center', alignItems:'flex-start'}}>
+            <TouchableOpacity style={{flex:1, justifyContent:'center', alignItems:'flex-start'}} onPress={()=>goTo('Login')}>
                <Text style={{fontFamily:'Poppins', fontWeight:'normal', fontSize:24, color:'#AFAC99'}}>Skip</Text>
-            </View>
+            </TouchableOpacity>
             <View style={{flex:1, alignItems:'flex-end'}}>
-               <Button width={129} height={53} text={'Next'}/>
+               <TouchableOpacity onPress={()=>goTo('Splashscreen3')}>
+                  <Button width={129} height={53} text={'Next'}/>
+               </TouchableOpacity>
             </View>
          </View>
       </View>

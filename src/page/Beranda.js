@@ -5,12 +5,16 @@
 import React from 'react';
 import {
    StyleSheet,
-   View, ImageBackground, Image, Text, ScrollView,
+   View, ImageBackground, Image, Text, ScrollView, TouchableOpacity,
 } from 'react-native';
 import { CardHome, Navigation, CardNews } from '../component';
 import { Banner } from '../atom';
 
-const Beranda = () => {
+const Beranda = ({navigation}) => {
+
+   const goTo = (page) => {navigation.replace(page);}
+   const goTo2 = (page) => {navigation.navigate(page);}
+
    return (
     <View style={{flex:1}} >
          <ScrollView style={{flex:1, marginBottom:0}} showsVerticalScrollIndicator={false}>
@@ -27,39 +31,36 @@ const Beranda = () => {
             </ImageBackground>
             <View style={{ paddingHorizontal:20}}>
                <View style={{ marginTop:-30}}>
-                  <Banner />
+                  <TouchableOpacity onPress={()=>goTo2('PromoAndNews')}>
+                     <Banner />
+                  </TouchableOpacity>
                </View>
                <View style={{ flexDirection:'row', justifyContent:'space-between', height:24, marginTop:20}}>
                   <Text style={{fontFamily:'Poppins', fontWeight:'bold', fontSize:14}}>Futsal Field</Text>
-                  <Image source={require('../asset/icon/show_all.png')} style={{width:24, height:24}}/>
+                  <TouchableOpacity onPress={()=>goTo2('Food')}>
+                     <Image source={require('../asset/icon/show_all.png')} style={{width:24, height:24}}/>
+                  </TouchableOpacity>
                </View>
                <ScrollView style={{ flexDirection:'row', marginTop:10}} horizontal showsHorizontalScrollIndicator={false}>
-                  <CardHome />
-                  <CardHome />
-                  <CardHome />
-                  <CardHome />
-                  <CardHome />
-                  <CardHome />
-                  <CardHome />
-                  <CardHome />
+                  <TouchableOpacity onPress={()=>goTo2('Field')}>
+                     <CardHome />
+                  </TouchableOpacity>
                </ScrollView>
                <View style={{ flexDirection:'row', justifyContent:'space-between', height:24, marginTop:20}}>
                   <Text style={{fontFamily:'Poppins', fontWeight:'bold', fontSize:14}}>Food & Beverages</Text>
-                  <Image source={require('../asset/icon/show_all.png')} style={{width:24, height:24}}/>
+                  <TouchableOpacity onPress={()=>goTo2('Food')}>
+                     <Image source={require('../asset/icon/show_all.png')} style={{width:24, height:24}}/>
+                  </TouchableOpacity>
                </View>
                <ScrollView style={{ flexDirection:'row', marginTop:10}} horizontal showsHorizontalScrollIndicator={false}>
-                  <CardHome />
-                  <CardHome />
-                  <CardHome />
-                  <CardHome />
-                  <CardHome />
-                  <CardHome />
-                  <CardHome />
-                  <CardHome />
+                  <TouchableOpacity onPress={()=>goTo2('Food')}>
+                     <CardHome />
+                  </TouchableOpacity>
                </ScrollView>
                <Text style={{fontFamily:'Poppins', fontWeight:'bold', fontSize:14, marginTop:20, marginBottom:10}}>What happen..?</Text>
-               <CardNews/>
-               <CardNews/>
+               <TouchableOpacity onPress={()=>goTo2('PromoAndNews')}>
+                  <CardNews/>
+               </TouchableOpacity>
             </View>
          </ScrollView>
 

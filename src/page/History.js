@@ -3,43 +3,36 @@
 /* eslint-disable react-native/no-inline-styles */
 
 import * as React from 'react';
-import { View, StyleSheet, Dimensions, ScrollView,ImageBackground, Text} from 'react-native';
+import { View, StyleSheet, Dimensions, ScrollView,ImageBackground, Text, TouchableOpacity} from 'react-native';
 import { TabView, SceneMap } from 'react-native-tab-view';
 import { Navigation, CardHistory } from '../component';
 
-const FirstRoute = () => (
+const FirstRoute = ({goTo}) => (
    <ScrollView style={{flex:1}} showsVerticalScrollIndicator={false}>
          <View style={{paddingHorizontal:20, marginTop:5}}>
-            <CardHistory />
-            <CardHistory />
-            <CardHistory />
-            <CardHistory />
-            <CardHistory />
-            <CardHistory />
-            <CardHistory />
-            <CardHistory />
-            <CardHistory />
-            <CardHistory />
-            <CardHistory />
-            <CardHistory />
-            <CardHistory />
-            <CardHistory />
-            <CardHistory />
+          <TouchableOpacity onPress={()=>goTo('BookDetail')}>
+              <CardHistory />
+          </TouchableOpacity>
         </View>
    </ScrollView>
 );
 
-const SecondRoute = () => (
+const SecondRoute = (goTo) => (
    <ScrollView style={{flex:1}} showsVerticalScrollIndicator={false}>
    <View style={{paddingHorizontal:20, marginTop:5}}>
-      <CardHistory />
+    <TouchableOpacity onPress={()=>goTo('BookDetail')}>
+        <CardHistory />
+      </TouchableOpacity>
   </View>
 </ScrollView>
 );
 
 const initialLayout = { width: Dimensions.get('window').width };
 
-export default function History() {
+export default function History({navigation}) {
+  const goTo = (page) => {navigation.replace(page);}
+   const goTo2 = (page) => {navigation.navigate(page);}
+
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
     { key: 'first', title: 'On Process' },
@@ -47,8 +40,8 @@ export default function History() {
   ]);
 
   const renderScene = SceneMap({
-    first: FirstRoute,
-    second: SecondRoute,
+    first: FirstRoute(goTo),
+    second: SecondRoute(goTo),
   });
 
   return (

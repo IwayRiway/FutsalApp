@@ -3,10 +3,14 @@
 /* eslint-disable react-native/no-inline-styles */
 
 import React from 'react';
-import { Image, ImageBackground, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Image, ImageBackground, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Button, InputText } from '../atom';
 
-const Login = () => {
+const Login = ({navigation}) => {
+
+   const goTo = (page) => {navigation.replace(page);}
+   const goTo2 = (page) => {navigation.navigate(page);}
+
    return (
       <KeyboardAvoidingView style={{flex:1}} behavior={Platform.OS === "ios" ? "padding" : "height"}>
       <ImageBackground style={{flex:1, padding: 24, justifyContent: "space-around"}} source={require('../asset/bg.png')} width="100%" height="100%">
@@ -23,11 +27,15 @@ const Login = () => {
                   <InputText placeholder={'Password..'}/>
                </View>
                <View style={{marginTop:20, width:219}}>
-                  <Button width={'100%'} height={53} text={'Sign In'}/>
+                  <TouchableOpacity onPress={()=>goTo('Beranda')}>
+                     <Button width={'100%'} height={53} text={'Sign In'}/>
+                  </TouchableOpacity>
                </View>
             </View>
             <View style={{flex:1, marginTop:20, alignItems:'center'}}>
-               <Text style={{fontFamily:'Poppins', fontWeight:'normal', fontSize:14}}>Dont have account? <Text style={{color:"#62BAAC"}}>Create here..</Text></Text>
+               <TouchableOpacity onPress={()=>goTo2('Register')}>
+                  <Text style={{fontFamily:'Poppins', fontWeight:'normal', fontSize:14}}>Dont have account? <Text style={{color:"#62BAAC"}}>Create here..</Text></Text>
+               </TouchableOpacity>
             </View>
          </ScrollView>
       </ImageBackground>

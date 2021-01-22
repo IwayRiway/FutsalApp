@@ -4,15 +4,20 @@
 /* eslint-disable prettier/prettier */
 
 import React from 'react';
-import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity } from 'react-native';
 import {Backdrop} from '../component';
 
-const PromoAndNews = () => {
+const PromoAndNews = ({navigation}) => {
+
+   const goTo = (page) => {navigation.replace(page);}
+
    return (
       <ScrollView style={{flex:1}} showsVerticalScrollIndicator={false}>
          <View style={{height:243, width:'100%', position:'relative'}}>
             <Backdrop />
-            <Image source={require('../asset/icon/back.png')} style={{width:30, height:30, position:'absolute', top:40, left:20}}/>
+            <TouchableOpacity onPress={()=>goTo('Beranda')} style={{position:'absolute', top:40, left:20}}>
+               <Image source={require('../asset/icon/back.png')} style={{width:30, height:30}}/>
+            </TouchableOpacity>
          </View>
          <View style={{flex:1, paddingHorizontal:20, paddingVertical:20}}>
             <Text style={{fontFamily:'Poppins', fontWeight:'bold', fontSize:18}}>FC Barcelona vs Real Madrid CF</Text>

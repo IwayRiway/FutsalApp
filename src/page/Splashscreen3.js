@@ -3,10 +3,12 @@
 /* eslint-disable react-native/no-inline-styles */
 
 import React from 'react';
-import { StyleSheet, Image, View, Text } from 'react-native';
+import { StyleSheet, Image, View, Text, TouchableOpacity } from 'react-native';
 import { Button } from '../atom';
 
-const Splashscreen3 = () => {
+const Splashscreen3 = ({navigation}) => {
+   const goTo = (page) => {navigation.replace(page);}
+
    return (
       <View style={{flex:1}}>
 
@@ -25,7 +27,9 @@ const Splashscreen3 = () => {
          {/* BUTTON */}
          <View style={{height:53, flexDirection:'row', paddingHorizontal:20, marginBottom:20}}>
             <View style={{flex:1, alignItems:'flex-end'}}>
+            <TouchableOpacity onPress={()=>goTo('Login')}>
                <Button width={129} height={53} text={'Next'}/>
+            </TouchableOpacity>
             </View>
          </View>
       </View>

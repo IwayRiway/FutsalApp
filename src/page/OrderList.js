@@ -5,19 +5,25 @@
 import React from 'react';
 import {
    Image, ImageBackground, ScrollView, StyleSheet,
-   Text, View,
+   Text, View, TouchableOpacity
 } from 'react-native';
 import Dash from 'react-native-dash';
 import { Button } from '../atom';
 import { PlusMinus } from '../component';
 
-const OrderList = () => {
+const OrderList = ({navigation}) => {
+
+   const goTo = (page) => {navigation.replace(page);}
+   const goTo2 = (page) => {navigation.navigate(page);}
+
    return (
     <View style={{flex:1}} >
          <ScrollView style={{flex:1, marginBottom:0}} showsVerticalScrollIndicator={false}>
             <ImageBackground style={{height:155, width:"100%"}} source={require('../asset/top.png')}>
             <View style={{flexDirection:'row', marginTop:40, paddingHorizontal:20}}>
-               <Image source={require('../asset/icon/back.png')} style={{width:30, height:30}}/>
+               <TouchableOpacity onPress={()=>goTo('History')}>
+                  <Image source={require('../asset/icon/back.png')} style={{width:30, height:30}}/>
+               </TouchableOpacity>
                <View style={{flex:1, justifyContent:'center', marginLeft:15}}>
                   <Text style={{fontFamily:'Poppins', fontWeight:'bold', fontSize:24}}>Order List</Text>
                </View>
@@ -101,7 +107,9 @@ const OrderList = () => {
                </View>
 
                <View style={{marginVertical:20}}>
-                  <Button text={'Pay Now'}/>
+                  <TouchableOpacity onPress={()=>goTo('History')}>
+                     <Button text={'Pay Now'}/>
+                  </TouchableOpacity>
                </View>
 
             </View>

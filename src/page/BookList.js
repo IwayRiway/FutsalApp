@@ -5,18 +5,24 @@
 import React from 'react';
 import {
    Image, ImageBackground, ScrollView, StyleSheet,
-   Text, View,
+   Text, View, TouchableOpacity,
 } from 'react-native';
 import Dash from 'react-native-dash';
 import { Button } from '../atom';
 
-const BookList = () => {
+const BookList = ({navigation}) => {
+
+   const goTo = (page) => {navigation.replace(page);}
+   const goTo2 = (page) => {navigation.navigate(page);}
+
    return (
     <View style={{flex:1}} >
          <ScrollView style={{flex:1, marginBottom:0}} showsVerticalScrollIndicator={false}>
             <ImageBackground style={{height:155, width:"100%"}} source={require('../asset/top.png')}>
             <View style={{flexDirection:'row', marginTop:40, paddingHorizontal:20}}>
-               <Image source={require('../asset/icon/back.png')} style={{width:30, height:30}}/>
+               <TouchableOpacity onPress={()=>goTo('BookNow')}>
+                  <Image source={require('../asset/icon/back.png')} style={{width:30, height:30}}/>
+               </TouchableOpacity>
                <View style={{flex:1, justifyContent:'center', marginLeft:15}}>
                   <Text style={{fontFamily:'Poppins', fontWeight:'bold', fontSize:24}}>Book List</Text>
                </View>
@@ -84,7 +90,9 @@ const BookList = () => {
                </View>
 
                <View style={{marginTop:20}}>
-                  <Button text={'Pay Now'}/>
+                  <TouchableOpacity onPress={()=>goTo('BookNow')}>
+                     <Button text={'Pay Now'}/>
+                  </TouchableOpacity>
                </View>
 
             </View>

@@ -3,16 +3,21 @@
 /* eslint-disable react-native/no-inline-styles */
 
 import React from 'react';
-import { Image, ImageBackground, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Image, ImageBackground, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Button, InputText } from '../atom';
 
-const Register = () => {
+const Register = ({navigation}) => {
+
+   const goTo = (page) => {navigation.replace(page);}
+
    return (
       <KeyboardAvoidingView style={{flex:1}} behavior={Platform.OS === "ios" ? "padding" : "height"}>
       <ImageBackground style={{flex:1, padding: 24, justifyContent: "space-around"}} source={require('../asset/bg.png')} width="100%" height="100%">
          <ScrollView style={{flex:1, paddingVertical:40, paddingHorizontal:20}}>
             <View style={{flexDirection:'row', height:30}}>
-               <Image source={require('../asset/icon/back.png')} style={{width:30, height:30}}/>
+               <TouchableOpacity onPress={()=>goTo('Login')}>
+                  <Image source={require('../asset/icon/back.png')} style={{width:30, height:30}}/>
+               </TouchableOpacity>
                <View style={{flex:1, justifyContent:'center', marginLeft:15}}>
                   <Text style={{fontFamily:'Poppins', fontWeight:'bold', fontSize:31}}>Sign Up</Text>
                </View>
@@ -37,7 +42,9 @@ const Register = () => {
                   <InputText placeholder={'Password..'}/>
                </View>
                <View style={{marginTop:20, width:219}}>
-                  <Button width={'100%'} height={53} text={'Sign Up'}/>
+                  <TouchableOpacity onPress={()=>goTo('Login')}>
+                     <Button width={'100%'} height={53} text={'Sign Up'}/>
+                  </TouchableOpacity>
                </View>
             </View>
          </ScrollView>

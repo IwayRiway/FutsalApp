@@ -1,16 +1,19 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable semi */
 /* eslint-disable react-native/no-inline-styles */
-/* eslint-disable prettier/prettier */
 import React from 'react';
 import {
    ImageBackground, ScrollView, StyleSheet,
-   Text, View, Image,
+   Text, View, Image, TouchableOpacity,
 } from 'react-native';
 import Dash from 'react-native-dash';
 import { Navigation } from '../component';
 
-const Account = () => {
+const Account = ({navigation}) => {
+
+   const goTo = (page) => {navigation.replace(page);}
+   const goTo2 = (page) => {navigation.navigate(page);}
+
    return (
     <View style={{flex:1}} >
          <ScrollView style={{flex:1, marginBottom:0}} showsVerticalScrollIndicator={false}>
@@ -29,28 +32,32 @@ const Account = () => {
             <View style={{paddingHorizontal:20, marginTop:20}}>
                <View style={styles.card}>
                   <View style={{flexDirection:'row', flex:1, marginTop:10}}>
-                     <View style={{flex:2, flexDirection:'row'}}>
-                        <Image source={require('../asset/icon/edit.png')} style={{width:16, height:16, marginRight:10}}/>
-                        <View style={{justifyContent:'center'}}>
-                           <Text style={{fontFamily:'Poppins', fontWeight:'normal', fontSize:14}}>Edit Profile</Text>
+                     <TouchableOpacity onPress={()=>goTo2('EditProfile')}>
+                        <View style={{flex:2, flexDirection:'row'}}>
+                           <Image source={require('../asset/icon/edit.png')} style={{width:16, height:16, marginRight:10}}/>
+                           <View style={{justifyContent:'center'}}>
+                              <Text style={{fontFamily:'Poppins', fontWeight:'normal', fontSize:14}}>Edit Profile</Text>
+                           </View>
                         </View>
-                     </View>
-                     <View style={{flex:1, justifyContent:'center', alignItems:'flex-end'}}>
-                     <Image source={require('../asset/icon/right.png')} style={{width:16, height:16}}/>
-                     </View>
+                        <View style={{flex:1, justifyContent:'center', alignItems:'flex-end'}}>
+                        <Image source={require('../asset/icon/right.png')} style={{width:16, height:16}}/>
+                        </View>
+                     </TouchableOpacity>
                   </View>
                   <Dash style={{width:'100%', marginVertical:10}} dashGap={5} dashColor={'#000000'} />
 
                   <View style={{flexDirection:'row', flex:1}}>
-                     <View style={{flex:2, flexDirection:'row'}}>
-                        <Image source={require('../asset/icon/help.png')} style={{width:16, height:16, marginRight:10}}/>
-                        <View style={{justifyContent:'center'}}>
-                           <Text style={{fontFamily:'Poppins', fontWeight:'normal', fontSize:14}}>Help</Text>
+                     <TouchableOpacity onPress={()=>goTo2('Help')}>
+                        <View style={{flex:2, flexDirection:'row'}}>
+                           <Image source={require('../asset/icon/help.png')} style={{width:16, height:16, marginRight:10}}/>
+                           <View style={{justifyContent:'center'}}>
+                              <Text style={{fontFamily:'Poppins', fontWeight:'normal', fontSize:14}}>Help</Text>
+                           </View>
                         </View>
-                     </View>
-                     <View style={{flex:1, justifyContent:'center', alignItems:'flex-end'}}>
-                     <Image source={require('../asset/icon/right.png')} style={{width:16, height:16}}/>
-                     </View>
+                        <View style={{flex:1, justifyContent:'center', alignItems:'flex-end'}}>
+                        <Image source={require('../asset/icon/right.png')} style={{width:16, height:16}}/>
+                        </View>
+                     </TouchableOpacity>
                   </View>
                   <Dash style={{width:'100%', marginVertical:10}} dashGap={5} dashColor={'#000000'} />
 
@@ -68,10 +75,12 @@ const Account = () => {
                   <Dash style={{width:'100%', marginVertical:10}} dashGap={5} dashColor={'#000000'} />
 
                   <View style={{flex:1, marginVertical:10}}>
-                     <View style={{width:'100%', height:53, borderRadius:20, backgroundColor:'#F98F71', alignItems:'center', flexDirection:'row', justifyContent:'center'}}>
-                     <Image source={require('../asset/icon/signout.png')} style={{width:27, height:27, marginRight:5}}/>
-                        <Text style={styles.textStyle}>Sign Out</Text>
-                     </View>
+                     <TouchableOpacity onPress={()=>goTo2('EditProfile')}>
+                        <View style={{width:'100%', height:53, borderRadius:20, backgroundColor:'#F98F71', alignItems:'center', flexDirection:'row', justifyContent:'center'}}>
+                        <Image source={require('../asset/icon/signout.png')} style={{width:27, height:27, marginRight:5}}/>
+                           <Text style={styles.textStyle}>Sign Out</Text>
+                        </View>
+                     </TouchableOpacity>
                   </View>
 
                </View>

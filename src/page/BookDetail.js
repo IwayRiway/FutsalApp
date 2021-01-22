@@ -5,17 +5,23 @@
 import React from 'react';
 import {
    Image, ImageBackground, ScrollView, StyleSheet,
-   Text, View
+   Text, View, TouchableOpacity,
 } from 'react-native';
 import Dash from 'react-native-dash';
 
-const BookDetail = () => {
+const BookDetail = ({navigation}) => {
+
+   const goTo = (page) => {navigation.replace(page);}
+   const goTo2 = (page) => {navigation.navigate(page);}
+
    return (
     <View style={{flex:1}} >
          <ScrollView style={{flex:1, marginBottom:0}} showsVerticalScrollIndicator={false}>
             <ImageBackground style={{height:155, width:"100%"}} source={require('../asset/top.png')}>
             <View style={{flexDirection:'row', marginTop:40, paddingHorizontal:20}}>
-               <Image source={require('../asset/icon/back.png')} style={{width:30, height:30}}/>
+               <TouchableOpacity onPress={()=>goTo2('EditProfile')}>
+                  <Image source={require('../asset/icon/back.png')} style={{width:30, height:30}}/>
+               </TouchableOpacity>
                <View style={{flex:1, justifyContent:'center', marginLeft:15}}>
                   <Text style={{fontFamily:'Poppins', fontWeight:'bold', fontSize:24}}>Book List</Text>
                </View>
@@ -83,7 +89,9 @@ const BookDetail = () => {
                         <Text style={{fontFamily:'Poppins', fontWeight:'normal', fontSize:14, color:'#BC5A40', paddingRight:10}}>Please check the booking data again. Tickets that have been purchased cannot be refund.</Text>
                      </View>
                      <View style={{width:50}}>
-                        <Image source={require('../asset/icon/qr_code.png')} style={{width:50, height:50}} />
+                        <TouchableOpacity onPress={()=>goTo2('EditProfile')}>
+                           <Image source={require('../asset/icon/qr_code.png')} style={{width:50, height:50}} />
+                        </TouchableOpacity>
                      </View>
                   </View>
 
