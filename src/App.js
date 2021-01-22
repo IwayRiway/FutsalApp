@@ -23,6 +23,10 @@ import OrderList from './page/OrderList';
 import BookDetail from './page/BookDetail';
 import OrderDetail from './page/OrderDetail';
 import EditProfile from './page/EditProfile';
+import Account from './page/Account';
+import Help from './page/Help';
+import TabViewExample from './page/TabViewExample';
+import History from './page/History';
 
 const App = () => {
   return (
@@ -41,7 +45,11 @@ const App = () => {
     // <OrderList />
     // <BookDetail />
     // <OrderDetail />
-    <EditProfile />
+    // <EditProfile />
+    // <Account />
+    // <Help />
+    // <TabViewExample />
+    <History />
   );
 };
 
