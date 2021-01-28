@@ -1,14 +1,37 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable no-undef */
 /* eslint-disable quotes */
 /* eslint-disable react-native/no-inline-styles */
 
-import React from 'react';
-import { Image, ImageBackground, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import { Button, InputText } from '../atom';
+import React, { useState } from 'react';
+import { Image, ImageBackground, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Button } from '../atom';
 
 const Register = ({navigation}) => {
+   const [name, setName] = useState("");
+   const [email, setEmail] = useState("");
+   const [password, setPassword] = useState("");
+   const [borderEmail, setBorderEmail] = useState("#AFAC99");
+   const [borderName, setBorderName] = useState("#AFAC99");
+   const [borderPassword, setBorderPassword] = useState("#AFAC99");
 
-   const goTo = (page) => {navigation.replace(page);}
+   const onFocus = (type) => {
+      [type] = 'black';
+    // eslint-disable-next-line semi
+    };
+
+    const onBlur = ()  => {
+      setBorderEmail('#AFAC99');
+      setBorderName('#AFAC99');
+      setBorderPassword('#AFAC99');
+    };
+
+   const goTo = (page) => {navigation.replace(page);};
+
+   const submit = () => {
+      console.log("MASK");
+      console.log(email);
+   };
 
    return (
       <KeyboardAvoidingView style={{flex:1}} behavior={Platform.OS === "ios" ? "padding" : "height"}>
@@ -33,16 +56,16 @@ const Register = ({navigation}) => {
 
             <View style={{flex:1, marginTop:15, alignItems:'center'}}>
                <View style={{marginTop:20, width:219}}>
-                  <InputText placeholder={'Email..'}/>
+                  <TextInput placeholder={'Email..'} style={{borderWidth:1, borderColor: borderEmail, borderRadius:20, paddingHorizontal:20, paddingVertical:18, height:53}} onBlur={() => onBlur()} onFocus={() => onFocus('setBorderEmail')} value={email} onChangeText={(value)=> setEmail(value)} />
                </View>
                <View style={{marginTop:20, width:219}}>
-                  <InputText placeholder={'Nama..'}/>
+                  <TextInput placeholder={'Nama..'} style={{borderWidth:1, borderColor: borderName, borderRadius:20, paddingHorizontal:20, paddingVertical:18, height:53}} onBlur={() => onBlur()} onFocus={() => onFocus('setBorderName')} value={name} onChangeText={(value)=> setName(value)} />
                </View>
                <View style={{marginTop:20, width:219}}>
-                  <InputText placeholder={'Password..'}/>
+                  <TextInput placeholder={'Password..'} style={{borderWidth:1, borderColor: borderPassword, borderRadius:20, paddingHorizontal:20, paddingVertical:18, height:53}} onBlur={() => onBlur()} onFocus={() => onFocus('setBorderPassword')} value={password} onChangeText={(value)=> setPassword(value)} secureTextEntry={true} />
                </View>
                <View style={{marginTop:20, width:219}}>
-                  <TouchableOpacity onPress={()=>goTo('Login')}>
+                  <TouchableOpacity onPress={()=>submit()}>
                      <Button width={'100%'} height={53} text={'Sign Up'}/>
                   </TouchableOpacity>
                </View>

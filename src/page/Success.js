@@ -1,4 +1,6 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable semi */
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/self-closing-comp */
 /* eslint-disable react-native/no-inline-styles */
 
@@ -14,7 +16,7 @@ const Success = ({navigation}) => {
       <View style={{flex:1, paddingHorizontal:20}}>
 
          {/* IMAGE */}
-         <View style={{flex:1, alignItems:'center', marginTop:100,}}>
+         <View style={{flex:1, alignItems:'center', marginTop:100}}>
             <Image source={require('../asset/success.png')} style={{height:244, width:273}}></Image>
          </View>
 

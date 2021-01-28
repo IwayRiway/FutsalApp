@@ -1,4 +1,6 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable quotes */
+/* eslint-disable no-unused-vars */
 /* eslint-disable semi */
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable prettier/prettier */

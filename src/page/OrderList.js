@@ -1,11 +1,14 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable semi */
+/* eslint-disable quotes */
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable prettier/prettier */
+
 import React from 'react';
 import {
    Image, ImageBackground, ScrollView, StyleSheet,
-   Text, View, TouchableOpacity
+   Text, View, TouchableOpacity,
 } from 'react-native';
 import Dash from 'react-native-dash';
 import { Button } from '../atom';
