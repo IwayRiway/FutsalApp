@@ -3,40 +3,97 @@
 /* eslint-disable quotes */
 /* eslint-disable react-native/no-inline-styles */
 
+import axios from 'axios';
 import React, { useState } from 'react';
 import { Image, ImageBackground, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { Button } from '../atom';
+import { base_url } from '../util';
 
 const Register = ({navigation}) => {
    const [name, setName] = useState("");
    const [email, setEmail] = useState("");
    const [password, setPassword] = useState("");
-   const [borderEmail, setBorderEmail] = useState("#AFAC99");
-   const [borderName, setBorderName] = useState("#AFAC99");
-   const [borderPassword, setBorderPassword] = useState("#AFAC99");
+   const [loading, setLoading] = useState(false);
+   const [image, setImage] = useState({
+      'srcImg' : require('../asset/logo.png'),
+      'uri': '',
+      'fileName': '',
+   });
+   const [border, setBorder] = useState({
+      'email' : '#AFAC99',
+      'name' : '#AFAC99',
+      'password' : '#AFAC99',
+   });
 
    const onFocus = (type) => {
-      [type] = 'black';
+      setBorder({
+         ...border,
+         [type] : 'black',
+      });
     // eslint-disable-next-line semi
     };
 
     const onBlur = ()  => {
-      setBorderEmail('#AFAC99');
-      setBorderName('#AFAC99');
-      setBorderPassword('#AFAC99');
+      setBorder({
+         'email' : '#AFAC99',
+         'name' : '#AFAC99',
+         'password' : '#AFAC99',
+      });
     };
 
    const goTo = (page) => {navigation.replace(page);};
 
    const submit = () => {
-      console.log("MASK");
-      console.log(email);
+      const data = {
+         name,
+         email,
+         password,
+      };
+
+      axios.post(base_url + `register`, data)
+      .then(result => {
+         console.log(result);
+      })
+      .catch(error => {
+         console.log(error);
+      });
    };
+
+   const choosePicture = () => {
+      var ImagePicker = require('react-native-image-picker');
+      var options = {
+          title: 'Pilih Gambar',
+          storageOptions: {
+            skipBackup: true,
+            path: 'images'
+          }
+      };
+      ImagePicker.launchImageLibrary(options, (response) => {
+          console.log('Response = ', response);
+          if (response.didCancel) {
+            console.log('User cancelled image picker');
+          }
+          else if (response.error) {
+            console.log('ImagePicker Error: ', response.error);
+          }
+          else if (response.customButton) {
+            console.log('User tapped custom button: ', response.customButton);
+          }
+          else {
+            console.log(response.fileName);
+            setImage({
+              'srcImg': { uri: response.uri },
+              'uri': response.uri,
+              'fileName': response.fileName,
+            });
+          }
+      });
+  };
 
    return (
       <KeyboardAvoidingView style={{flex:1}} behavior={Platform.OS === "ios" ? "padding" : "height"}>
       <ImageBackground style={{flex:1, padding: 24, justifyContent: "space-around"}} source={require('../asset/bg.png')} width="100%" height="100%">
-         <ScrollView style={{flex:1, paddingVertical:40, paddingHorizontal:20}}>
+         <ScrollView style={{flex:1, paddingVertical:40, paddingHorizontal:20}} showsVerticalScrollIndicator={false} >
             <View style={{flexDirection:'row', height:30}}>
                <TouchableOpacity onPress={()=>goTo('Login')}>
                   <Image source={require('../asset/icon/back.png')} style={{width:30, height:30}}/>
@@ -49,20 +106,22 @@ const Register = ({navigation}) => {
             {/* PROFILE POTO */}
             <View style={{flex:1, justifyContent: 'center', alignItems:'center'}}>
                <View style={styles.borderDash}>
-                  <Image source={require('../asset/logo.png')} style={{width:90, height:90}}/>
+                  <Image source={image.srcImg} style={{width:90, height:90, borderRadius:100}}/>
                </View>
-               <Image source={require('../asset/icon/add.png')} style={{width:30, height:30, position:'absolute', bottom:-15}}/>
+               <TouchableOpacity style={{position:'absolute', bottom:-15}} onPress={()=>choosePicture()}>
+                  <Image source={require('../asset/icon/add.png')} style={{width:30, height:30}}/>
+               </TouchableOpacity>
             </View>
 
             <View style={{flex:1, marginTop:15, alignItems:'center'}}>
                <View style={{marginTop:20, width:219}}>
-                  <TextInput placeholder={'Email..'} style={{borderWidth:1, borderColor: borderEmail, borderRadius:20, paddingHorizontal:20, paddingVertical:18, height:53}} onBlur={() => onBlur()} onFocus={() => onFocus('setBorderEmail')} value={email} onChangeText={(value)=> setEmail(value)} />
+                  <TextInput placeholder={'Email..'} style={{borderWidth:1, borderColor: border.email, borderRadius:20, paddingHorizontal:20, paddingVertical:18, height:53}} onBlur={() => onBlur()} onFocus={() => onFocus('email')} value={email} onChangeText={(value)=> setEmail(value)} />
                </View>
                <View style={{marginTop:20, width:219}}>
-                  <TextInput placeholder={'Nama..'} style={{borderWidth:1, borderColor: borderName, borderRadius:20, paddingHorizontal:20, paddingVertical:18, height:53}} onBlur={() => onBlur()} onFocus={() => onFocus('setBorderName')} value={name} onChangeText={(value)=> setName(value)} />
+                  <TextInput placeholder={'Nama..'} style={{borderWidth:1, borderColor: border.name, borderRadius:20, paddingHorizontal:20, paddingVertical:18, height:53}} onBlur={() => onBlur()} onFocus={() => onFocus('name')} value={name} onChangeText={(value)=> setName(value)} />
                </View>
                <View style={{marginTop:20, width:219}}>
-                  <TextInput placeholder={'Password..'} style={{borderWidth:1, borderColor: borderPassword, borderRadius:20, paddingHorizontal:20, paddingVertical:18, height:53}} onBlur={() => onBlur()} onFocus={() => onFocus('setBorderPassword')} value={password} onChangeText={(value)=> setPassword(value)} secureTextEntry={true} />
+                  <TextInput placeholder={'Password..'} style={{borderWidth:1, borderColor: border.password, borderRadius:20, paddingHorizontal:20, paddingVertical:18, height:53}} onBlur={() => onBlur()} onFocus={() => onFocus('password')} value={password} onChangeText={(value)=> setPassword(value)} secureTextEntry={true} />
                </View>
                <View style={{marginTop:20, width:219}}>
                   <TouchableOpacity onPress={()=>submit()}>
