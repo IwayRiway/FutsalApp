@@ -9,13 +9,14 @@ import {Backdrop} from '../component';
 
 const PromoAndNews = ({navigation}) => {
 
-   const goTo = (page) => {navigation.replace(page);}
+   const goTo = (page) => {navigation.back(page);}
 
    return (
       <ScrollView style={{flex:1}} showsVerticalScrollIndicator={false}>
          <View style={{height:243, width:'100%', position:'relative'}}>
             <Backdrop />
-            <TouchableOpacity onPress={()=>goTo('Beranda')} style={{position:'absolute', top:40, left:20}}>
+            {/* <TouchableOpacity onPress={()=>goTo('Beranda')} style={{position:'absolute', top:40, left:20}}> */}
+            <TouchableOpacity onPress={()=>navigation.goBack(null)} style={{position:'absolute', top:40, left:20}}>
                <Image source={require('../asset/icon/back.png')} style={{width:30, height:30}}/>
             </TouchableOpacity>
          </View>

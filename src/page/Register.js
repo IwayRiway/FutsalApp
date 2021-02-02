@@ -1,13 +1,16 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable comma-dangle */
 /* eslint-disable no-undef */
 /* eslint-disable quotes */
 /* eslint-disable react-native/no-inline-styles */
 
 import axios from 'axios';
 import React, { useState } from 'react';
-import { Image, ImageBackground, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Image, ImageBackground, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View, ActivityIndicator } from 'react-native';
 import { Button } from '../atom';
 import { base_url } from '../util';
+import Modal from 'react-native-modal';
+import Toast from 'react-native-toast-message';
 
 const Register = ({navigation}) => {
    const [name, setName] = useState("");
@@ -43,18 +46,51 @@ const Register = ({navigation}) => {
 
    const goTo = (page) => {navigation.replace(page);};
 
+   const showAlert = (type,text1,text2) => {
+      Toast.show({
+         text1: text1,
+         text2: text2,
+         topOffset: 0,
+         type : type,
+         visibilityTime: 1800,
+       });
+   };
+
    const submit = () => {
-      const data = {
-         name,
-         email,
-         password,
-      };
+      // const data = {
+      //    name,
+      //    email,
+      //    password,
+      //    file : {uri: image.uri, type: 'image/jpeg', name:image.fileName}
+      // };
+
+      setLoading(true);
+      // setLoading(false);
+      // showAlert('success', 'Sukses', 'Data Berhasil Disimpan');
+      // setTimeout(() => {
+      //    goTo('Login');
+      // }, 2000);
+
+      const data = new FormData();
+      data.append('file', {
+         uri: image.uri, type: 'image/jpeg', name:image.fileName
+       });
+      data.append('name', name);
+      data.append('email', email);
+      data.append('password', password);
 
       axios.post(base_url + `register`, data)
       .then(result => {
+         setLoading(false);
+         showAlert('success', 'Sukses', 'Data Berhasil Disimpan');
+         setTimeout(() => {
+            goTo('Login');
+         }, 2000);
          console.log(result);
       })
       .catch(error => {
+         setLoading(false);
+         showAlert('error', 'Gagal', 'Registrasi Gagal. Silahkan coba lagi');
          console.log(error);
       });
    };
@@ -68,32 +104,38 @@ const Register = ({navigation}) => {
             path: 'images'
           }
       };
-      ImagePicker.launchImageLibrary(options, (response) => {
-          console.log('Response = ', response);
-          if (response.didCancel) {
-            console.log('User cancelled image picker');
-          }
-          else if (response.error) {
-            console.log('ImagePicker Error: ', response.error);
-          }
-          else if (response.customButton) {
-            console.log('User tapped custom button: ', response.customButton);
-          }
-          else {
-            console.log(response.fileName);
-            setImage({
-              'srcImg': { uri: response.uri },
-              'uri': response.uri,
-              'fileName': response.fileName,
-            });
-          }
-      });
-  };
+         ImagePicker.launchImageLibrary(options, (response) => {
+            if (response.didCancel) {
+               console.log('User cancelled image picker');
+            }
+            else if (response.error) {
+               console.log('ImagePicker Error: ', response.error);
+            }
+            else if (response.customButton) {
+               console.log('User tapped custom button: ', response.customButton);
+            }
+            else {
+               setImage({
+               'srcImg': { uri: response.uri },
+               'uri': response.uri,
+               'fileName': response.fileName,
+               });
+            }
+         });
+      };
 
    return (
       <KeyboardAvoidingView style={{flex:1}} behavior={Platform.OS === "ios" ? "padding" : "height"}>
       <ImageBackground style={{flex:1, padding: 24, justifyContent: "space-around"}} source={require('../asset/bg.png')} width="100%" height="100%">
          <ScrollView style={{flex:1, paddingVertical:40, paddingHorizontal:20}} showsVerticalScrollIndicator={false} >
+            {/* MODAL */}
+            <Modal isVisible={loading} style={{justifyContent:'center', alignItems:'center'}}>
+               <View style={{ width: '80%', padding : 20, backgroundColor:'#ffffff', borderRadius:20, justifyContent:'center', alignItems:'center' }}>
+                  <ActivityIndicator size="large" color="#83E255" />
+                  <Text style={{marginTop:20}}>Please wait..</Text>
+               </View>
+            </Modal>
+
             <View style={{flexDirection:'row', height:30}}>
                <TouchableOpacity onPress={()=>goTo('Login')}>
                   <Image source={require('../asset/icon/back.png')} style={{width:30, height:30}}/>
@@ -129,6 +171,7 @@ const Register = ({navigation}) => {
                   </TouchableOpacity>
                </View>
             </View>
+            <Toast ref={(ref) => Toast.setRef(ref)} />
          </ScrollView>
       </ImageBackground>
       </KeyboardAvoidingView>
