@@ -30,7 +30,7 @@ const Splashscreen2 = ({navigation}) => {
 
          {/* BUTTON */}
          <View style={{height:53, flexDirection:'row', paddingHorizontal:20, marginBottom:20}}>
-            <TouchableOpacity style={{flex:1, justifyContent:'center', alignItems:'flex-start'}} onPress={()=>goTo('Login')}>
+            <TouchableOpacity style={{flex:1, justifyContent:'center', alignItems:'flex-start'}} onPress={()=>goTo('Beranda')}>
                <Text style={{fontFamily:'Poppins', fontWeight:'normal', fontSize:24, color:'#AFAC99'}}>Skip</Text>
             </TouchableOpacity>
             <View style={{flex:1, alignItems:'flex-end'}}>

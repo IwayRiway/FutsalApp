@@ -2,3 +2,4 @@
 /* eslint-disable eol-last */
 export * from './api';
 export * from './style';
+export * from './storage';

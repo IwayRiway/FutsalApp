@@ -4,12 +4,12 @@
 /* eslint-disable react-native/no-inline-styles */
 
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import { ActivityIndicator, Image, ImageBackground, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import Modal from 'react-native-modal';
 import Toast from 'react-native-toast-message';
 import { Button } from '../atom';
-import { base_url } from '../util';
+import { base_url, storeDataJson} from '../util';
 
 const Login = ({navigation}) => {
    const [email, setEmail] = useState("");
@@ -60,13 +60,16 @@ const Login = ({navigation}) => {
          setLoading(false);
          if (result.data.code == 200){
             showAlert('success', 'Sukses', 'Behasil Login');
-            setTimeout(() => {
-               goTo('Beranda');
-            }, 3000);
+            const storeData = storeDataJson('@user', result.data.result);
+            if (storeData){
+               setTimeout(() => {
+                  goTo('Beranda');
+               }, 3000);
+            }
          } else {
             showAlert('error', 'Gagal', result.data.status);
          }
-         console.log(result.data);
+         // console.log(result.data);
       })
       .catch(error => {
          setLoading(false);
@@ -78,7 +81,7 @@ const Login = ({navigation}) => {
    return (
       <KeyboardAvoidingView style={{flex:1}} behavior={Platform.OS === "ios" ? "padding" : "height"}>
       <ImageBackground style={{flex:1, padding: 24, justifyContent: "space-around"}} source={require('../asset/bg.png')} width="100%" height="100%">
-         <ScrollView style={{flex:1, paddingVertical:40, paddingHorizontal:20}}>
+         <ScrollView style={{flex:1, paddingVertical:40, paddingHorizontal:20}} showsVerticalScrollIndicator={false}>
             {/* MODAL */}
             <Modal isVisible={loading} style={{justifyContent:'center', alignItems:'center'}}>
                <View style={{ width: '80%', padding : 20, backgroundColor:'#ffffff', borderRadius:20, justifyContent:'center', alignItems:'center' }}>

@@ -2,3 +2,4 @@
 /* eslint-disable quotes */
 /* eslint-disable eol-last */
 export const base_url = "https://futsal.mywayout.my.id/public/api/";
+export const img_url = "https://futsal.mywayout.my.id/public/";
