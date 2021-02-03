@@ -4,9 +4,10 @@
 import React from 'react';
 import { Image, StyleSheet } from 'react-native';
 
-const Banner = () => {
+const Banner = ({img}) => {
+
    return (
-      <Image source={require('../../asset/banner.png')} style={{width:'100%', height:194, borderRadius:20, borderColor:'white', borderWidth:2}} resizeMode="cover"/>
+      <Image source={{uri: img}} style={{width:'100%', height:194, borderRadius:20, borderColor:'white', borderWidth:2}} resizeMode="cover"/>
    )
 }
 
